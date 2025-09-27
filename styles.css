@@ -764,10 +764,10 @@ section.visible {
   margin-bottom: 0.5rem;
 }
 
-.contact-details p {
+/*.contact-details p {
   color: var(--text-dim);
-}
-.contact-details a {
+}*/
+.contact-details a,p {
   color: var(--text-dim);
   text-decoration: none;
   transition: color 0.3s ease;
