@@ -170,16 +170,19 @@ section.visible {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .typewriter {
-    font-size: 0.9em; /* Adjust if needed */
-    text-align: center;
-    justify-content: center;
-    width: 100%; /* Ensure it takes full width on smaller screens */
-    position: relative;
-    overflow: hidden;
-
+    font-size: 0.7rem; /* Fixed font size */
+    border-right: none; /* Remove cursor border */
+    animation: typing 5s steps(85, end) forwards; /* Remove blink-caret animation */
   }
-    
 }
+
+/* Stop cursor blinking after typing is complete - Only for desktop */
+@media (min-width: 769px) {
+  .typewriter.typed {
+    animation: blink-caret 0.75s step-end infinite;
+  }
+}
+
 /* Stop cursor blinking after typing is complete */
 .typewriter.typed {
   animation: blink-caret 0.75s step-end infinite;
