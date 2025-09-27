@@ -170,8 +170,15 @@ section.visible {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .typewriter {
-    font-size: 0.6em; /* Adjust if needed */
+    font-size: 0.9em; /* Adjust if needed */
+    text-align: center;
+    justify-content: center;
+    width: 100%; /* Ensure it takes full width on smaller screens */
+    position: relative;
+    overflow: hidden;
+
   }
+    
 }
 /* Stop cursor blinking after typing is complete */
 .typewriter.typed {
