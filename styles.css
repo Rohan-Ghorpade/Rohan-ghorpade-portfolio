@@ -767,6 +767,11 @@ section.visible {
 .contact-details p {
   color: var(--text-dim);
 }
+.contact-details a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
 .terminal {
   background: rgba(10, 10, 20, 0.8);

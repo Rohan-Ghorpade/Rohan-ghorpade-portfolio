@@ -186,4 +186,103 @@ document.addEventListener('DOMContentLoaded', function () {
         var(--darker-bg)
     `;
   });
+
+
+
+
+  // Initialize EmailJS with your public key
+(function() {
+    emailjs.init({
+        publicKey: "6dtMjbCLjL1fhE_DQ", // Your public key
+    });
+})();
+
+// Function to send email
+const sendEmail = (event) => {
+    event.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('contact-name').value;
+    const email = document.getElementById('contact-email').value;
+    const message = document.getElementById('contact-message').value;
+    
+    // Validate form
+    if (!name || !email || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // Template parameters matching your EmailJS template
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        message: message,
+        to_name: 'Rohan', // Your name
+    };
+    
+    // Show loading state
+    const submitBtn = document.getElementById('transmit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Send email using EmailJS
+    emailjs.send(
+        'service_oige75c',    // Your service ID
+        'template_rizzvxt',   // Your template ID
+        templateParams
+    )
+    .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Message sent successfully!');
+        
+        // Clear form
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-email').value = '';
+        document.getElementById('contact-message').value = '';
+        
+        // Add terminal success message
+        const terminalBody = document.querySelector('.terminal-body');
+        const successMsg = document.createElement('p');
+        successMsg.className = 'monospace';
+        successMsg.style.color = '#00ff00';
+        successMsg.textContent = 'Message transmitted successfully [✓]';
+        terminalBody.appendChild(successMsg);
+        
+    })
+    .catch((error) => {
+        console.log('FAILED...', error);
+        alert('Failed to send message. Please try again.');
+        
+        // Add terminal error message
+        const terminalBody = document.querySelector('.terminal-body');
+        const errorMsg = document.createElement('p');
+        errorMsg.className = 'monospace';
+        errorMsg.style.color = '#ff0000';
+        errorMsg.textContent = 'Transmission failed [✗]';
+        terminalBody.appendChild(errorMsg);
+    })
+    .finally(() => {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
+};
+
+// Add event listener when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('transmit-btn').addEventListener('click', sendEmail);
+});
+
+
+  
+
+
+
+
+
+
+
+
+
 });
