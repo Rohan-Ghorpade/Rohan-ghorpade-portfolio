@@ -137,24 +137,49 @@ section.visible {
 }
 
 /* Typewriter effect */
+/* Enhanced Typewriter effect */
 .typewriter {
   overflow: hidden;
-  border-right: 0.15em solid var(--accent-glow);
+  border-right: 0.08em solid var(--accent-glow);
   white-space: nowrap;
   margin: 0 auto;
-  letter-spacing: 0.15em;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  letter-spacing: 0.02em;
+  width: 0;
+  font-size: 1.2rem !important;
+  animation: typing 5s steps(85, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  from { 
+    width: 0; 
+  }
+  to { 
+    width: 100%;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--accent-glow); }
+  from, to { 
+    border-color: transparent; 
+  }
+  50% { 
+    border-color: var(--accent-glow); 
+  }
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .typewriter {
+    font-size: 0.6em; /* Adjust if needed */
+  }
+}
+/* Stop cursor blinking after typing is complete */
+.typewriter.typed {
+  animation: blink-caret 0.75s step-end infinite;
+} 
+
+
+/* Hero Section */
 
 /* Hero Section */
 #hero {
@@ -767,10 +792,9 @@ section.visible {
 /*.contact-details p {
   color: var(--text-dim);
 }*/
-.contact-details a,p {
+.contact-details p,a {
   color: var(--text-dim);
-  text-decoration: none;
-  transition: color 0.3s ease;
+
 }
 
 .terminal {
